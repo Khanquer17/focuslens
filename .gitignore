@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+renderer/node_modules/
+
+# Build output
+dist/
+build/
+out/
+renderer/dist/
+
+# Logs
+*.log
+focuslens-debug.log
+
+# macOS
+.DS_Store
+
+# Env / secrets
+.env
+.env.*
+
+# Packaged binaries
+*.dmg
+*.zip
+*.app
+
+# Editor
+.vscode/
+.idea/

@@ -1,0 +1,36 @@
+{
+  "name": "focuslens",
+  "version": "1.0.0",
+  "description": "Personal productivity tracker for macOS",
+  "main": "main/index.js",
+  "scripts": {
+    "start": "electron .",
+    "rebuild": "electron-rebuild",
+    "build:renderer": "cd renderer && npm run build",
+    "make": "electron-builder --mac",
+    "postinstall": "electron-rebuild"
+  },
+  "author": "Ashish",
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^12.8.0"
+  },
+  "devDependencies": {
+    "@electron/rebuild": "^4.0.3",
+    "electron": "^41.1.1",
+    "electron-builder": "^26.8.1"
+  },
+  "build": {
+    "appId": "com.ashish.focuslens",
+    "productName": "FocusLens",
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": "dmg"
+    },
+    "files": [
+      "main/**/*",
+      "renderer/dist/**/*",
+      "assets/**/*"
+    ]
+  }
+}
