@@ -6,9 +6,10 @@
   "scripts": {
     "start": "electron .",
     "rebuild": "electron-rebuild",
+    "install:renderer": "cd renderer && npm install",
     "build:renderer": "cd renderer && npm run build",
-    "make": "electron-builder --mac",
-    "postinstall": "electron-rebuild"
+    "make": "npm run install:renderer && npm run build:renderer && electron-builder --mac",
+    "postinstall": "electron-rebuild && npm run install:renderer && npm run build:renderer"
   },
   "author": "Ashish",
   "license": "MIT",

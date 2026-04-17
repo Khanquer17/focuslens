@@ -22,16 +22,13 @@ Everything stays on your Mac.
 ## Quick start
 
 ```bash
-git clone https://github.com/khanquer17/focuslens.git
+git clone https://github.com/Khanquer17/focuslens.git
 cd focuslens
 
-# Install Electron + native deps (postinstall rebuilds better-sqlite3 for Electron)
+# Installs root + renderer deps, rebuilds better-sqlite3 for Electron, builds the React renderer
 npm install
 
-# Build the React renderer
-cd renderer && npm install && npm run build && cd ..
-
-# Run
+# Run in dev
 npm start
 ```
 
@@ -75,7 +72,14 @@ focuslens/
 ## Troubleshooting
 
 - **`Error: Cannot find module 'better-sqlite3'` or native-module ABI mismatch** — re-run `npm run rebuild` from the project root. This rebuilds the native module against the version of Electron you have installed.
-- **Blank window / "renderer/dist not found"** — you forgot the renderer build step. Run `cd renderer && npm install && npm run build`.
+- **Blank window after opening the `.dmg`** — you're on an older build that shipped before the renderer-build fix. Pull the latest repo and rebuild:
+  ```bash
+  git pull
+  rm -rf node_modules renderer/node_modules renderer/dist dist
+  npm install
+  npm run make
+  ```
+- **Blank window in dev (`npm start`)** — `renderer/dist` wasn't built. Run `npm run build:renderer`, then `npm start` again.
 - **Tracker shows nothing** — Accessibility and/or Screen Recording permissions weren't granted. Grant them, then quit and relaunch.
 - **Stale debug log** — written to `$TMPDIR/focuslens-debug.log` if you need to see what's happening.
 
